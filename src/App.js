@@ -1,23 +1,21 @@
-import logo from './logo.svg';
+import hero from './hero.svg';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+  const [user, setUser] = useState("");
+  const handleChange = (event) => { setUser(event.target.value); };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <img src={hero} className="App-hero" alt="logo" />
+      <h1>Välkommen till min Reactapplikation!</h1>
+      <form>
+        <label for="name">Vad heter du?</label>
+        <br />
+        <input type="text" name="name" id="name" onChange={handleChange} value={user} />
+      </form>
+      <p>Kul att du testade min applikation {user}</p>
     </div>
   );
 }
